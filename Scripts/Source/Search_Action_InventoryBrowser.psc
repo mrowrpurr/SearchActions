@@ -1,8 +1,18 @@
-scriptName Search_Action_InventoryBrowser extends SearchAction
+scriptName Search_Action_InventoryBrowser extends SearchActionExtended
 
 Actor property InventoryContainer auto
 
 event OnAction(int actionInfo)
+
+    if IsSearchResult(actionInfo)
+        ShowOkMessage("Enter number of items to add to inventory")
+        int count = GetUserText() as int
+        if count
+            PlayerRef.AddItem(GetForm(actionInfo), count)
+        endIf
+        return
+    endIf
+
     InventoryContainer.RemoveAllItems()
     Form[] items = GetAllForms(actionInfo)
     int i = 0
