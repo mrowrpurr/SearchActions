@@ -4,7 +4,7 @@ Actor property InventoryContainer auto
 
 event OnAction(int actionInfo)
     InventoryContainer.RemoveAllItems()
-    Form[] items = GetAllForms(actionInfo)
+    Form[] items = GetAllFormsForCategories(actionInfo)
     int i = 0
     while i < items.Length
         Form theItem = items[i]
@@ -16,5 +16,6 @@ event OnAction(int actionInfo)
         InventoryContainer.AddItem(items[i], count)
         i += 1
     endWhile
-    InventoryContainer.Activate(PlayerRef)
+    InventoryContainer.GetActorBase().SetName("Items")
+    InventoryContainer.OpenInventory(abForceOpen = true)
 endEvent

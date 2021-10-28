@@ -16,6 +16,7 @@
     </Variables>
     <Imports>
         <Import>@ModsFolder\Search Core\Scripts\Source</Import>
+        <Import>@ModsFolder\Form Helper\Scripts\Source</Import>
 
         <Import>@ImportsFolder\SKSE64\Scripts\Source</Import>
         <Import>@ImportsFolder\JContainers\Scripts\Source</Import>
