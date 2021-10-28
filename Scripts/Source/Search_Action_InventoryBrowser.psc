@@ -4,7 +4,7 @@ Actor property InventoryContainer auto
 
 event OnAction(int actionInfo)
     InventoryContainer.RemoveAllItems()
-    Form[] items = GetAllFormsForCategories(actionInfo)
+    Form[] items = GetAllForms(actionInfo)
     int i = 0
     while i < items.Length
         Form theItem = items[i]
