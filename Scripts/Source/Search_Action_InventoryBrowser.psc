@@ -6,7 +6,7 @@ event OnAction(int actionInfo)
 
     if IsSearchResult(actionInfo)
         ShowOkMessage("Enter number of items to add to inventory")
-        int count = GetUserText() as int
+        int count = GetUserText(1) as int
         if count
             PlayerRef.AddItem(GetForm(actionInfo), count)
         endIf
