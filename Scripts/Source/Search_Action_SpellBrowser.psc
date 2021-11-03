@@ -1,1 +1,0 @@
-Scriptname Search_Action_SpellBrowser extends ReferenceAlias  
