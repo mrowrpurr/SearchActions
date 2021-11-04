@@ -6,6 +6,7 @@ scriptName SearchActions extends SearchActionBase
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 event OnSearchActionBaseInit()
+    ListenForSearchAction("LearnSpell")
     ListenForSearchAction("CenterOnCell")
     ListenForSearchAction("ApplyImageSpaceModifier")
     ListenForSearchAction("ChangeWeather")
@@ -26,6 +27,25 @@ Actor property InventoryContainer auto
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Action Handlers
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+event OnLearnSpell(int actionInfo)
+    if IsSearchResult(actionInfo)
+        Spell theSpell = GetForm(actionInfo) as Spell
+        if theSpell
+            PlayerRef.AddSpell(theSpell)
+        endIf
+    else
+        Form[] theSpells = GetAllForms(actionInfo)
+        int i = 0
+        while i < theSpells.Length
+            Spell theSpell = theSpells[i] as Spell
+            if theSpell && ! PlayerRef.HasSpell(theSpell)
+                PlayerRef.AddSpell(theSpell)
+            endIf
+            i += 1
+        endWhile
+    endIf
+endEvent
 
 event OnCenterOnCell(int actionInfo)
     Debug.CenterOnCell(GetEditorId(actionInfo))
